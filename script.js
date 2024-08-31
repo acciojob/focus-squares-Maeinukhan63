@@ -1,21 +1,19 @@
-//your JS code here. If required.
 // script.js
 
-// Function to change the color of squares
+// Function to handle mouse over event
 function handleMouseOver(event) {
-    // Get the id of the square that is being hovered over
+    // Define colors
+    const lavenderColor = '#E6E6FA'; // lavender
+    const coffeeColor = '#6F4E37';   // coffee
+
+    // Get the hovered square's id
     const hoveredSquareId = event.target.id;
-    
-    // Define the color codes
-    const lavenderColor = '#E6E6FA';
-    const coffeeColor = '#6F4E37';
-    
+
     // Get all the squares
     const squares = document.querySelectorAll('.square');
-    
-    // Iterate through each square
+
+    // Update colors based on the hovered square
     squares.forEach(square => {
-        // Change color based on whether the square is the one being hovered over or not
         if (square.id === hoveredSquareId) {
             square.style.backgroundColor = lavenderColor;
         } else {
@@ -24,10 +22,18 @@ function handleMouseOver(event) {
     });
 }
 
-// Get all squares
-const squares = document.querySelectorAll('.square');
+// Function to reset all squares to lavender color
+function handleMouseOut() {
+    const lavenderColor = '#E6E6FA'; // lavender
+    const squares = document.querySelectorAll('.square');
+    
+    squares.forEach(square => {
+        square.style.backgroundColor = lavenderColor;
+    });
+}
 
-// Add event listeners for mouseover event
-squares.forEach(square => {
+// Attach event listeners to squares
+document.querySelectorAll('.square').forEach(square => {
     square.addEventListener('mouseover', handleMouseOver);
+    square.addEventListener('mouseout', handleMouseOut);
 });
